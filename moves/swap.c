@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:11 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/22 20:13:13 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/23 11:33:28 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	sa(t_stack *stack, int flag)
 	stack->a[1] = tmp;
 	if (flag == 1)
 		write(1, "sa\n", 3);
-	return(i);
+	return (i);
 }
 
 int	sb(t_stack *stack, int flag)
@@ -37,5 +37,5 @@ int	sb(t_stack *stack, int flag)
 	stack->b[1] = tmp;
 	if (flag == 1)
 		write(1, "sb\n", 3);
-	return(i);
+	return (i);
 }

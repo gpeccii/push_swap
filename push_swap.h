@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:52 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/22 20:13:54 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/23 17:11:03 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct s_stack
 {
 	int	*a;
 	int	*b;
-	int	current_a; //index last of stack a
-	int	current_b;//index last of stack b
+	int	current_a;
+	int	current_b;
 	int	size_lis;
 	int	index_lis;
 	int	n_moves;
@@ -51,8 +51,13 @@ int		ft_checkdoubles(char **argv, int argc);
 
 void	lis(t_stack *stack);
 
+int		count_moves_zero(int i, int size1, int last_index_to, int *from, int *to);
+int		count_moves_last(int i, int size1, int last_index_to, int *from, int *to);
+int		cheapest_move(t_stack *stack);
+
 void	sort_three(t_stack *stack);
 void	sort_two(t_stack *stack);
 void	lis_to_b(t_stack *stack);
+void	sort_big(t_stack *stack);
 
 #endif

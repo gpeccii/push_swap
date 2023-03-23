@@ -6,11 +6,13 @@
 #    By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/22 20:13:40 by gpecci            #+#    #+#              #
-#    Updated: 2023/03/22 20:13:41 by gpecci           ###   ########.fr        #
+#    Updated: 2023/03/23 14:25:14 by gpecci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
+
+MAKEFLAGS += --silent
 
 LIBFT_PATH = libft/
 LIBFT = $(LIBFT_PATH)libft.a
@@ -27,6 +29,7 @@ SRCS =	$(P1)push.c \
 		lis.c \
 		sort.c \
 		push_swap.c \
+		min_moves.c \
 
 OBJS = ${SRCS:.c=.o}
 
@@ -40,6 +43,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 $(NAME):	$(OBJS) $(LIBFT) $(FT_PRINTF)
 			$(CC) $(OBJS) $(LIBFT) $(FT_PRINTF) -o $(NAME)
+	@echo "\033[32mCompiled OK!\033[0m"
 
 $(FT_PRINTF):
 				make -C $(FT_PRINTF_PATH)
@@ -53,10 +57,12 @@ clean:
 		${RM} ${OBJS}
 		make clean -C ${LIBFT_PATH}
 		make clean -C ${FT_PRINTF_PATH}
+		@echo "\033[33mclean OK!\033[0m"
 
 fclean:		clean
 				rm -f $(NAME)
 				rm -f ${LIBFT}
 				rm -f ${FT_PRINTF}
+				@echo "\033[33mfclean OK!\033[0m"
 
 re:				fclean all

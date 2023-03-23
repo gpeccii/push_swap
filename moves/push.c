@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:12:51 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/22 20:12:54 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/23 16:42:58 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ int	pb(t_stack *stack, int flag)
 	stack->current_a--;
 	if (flag == 1)
 		write(1, "pb\n", 3);
-		return (i);
+	return (i);
 }
