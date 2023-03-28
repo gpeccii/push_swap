@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:33 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/23 13:01:28 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/27 17:54:08 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	lis(t_stack *stack)
 	int	flag;
 
 	i = 0;
-	while (stack->a[i])
+	while (i < stack->current_a)
 	{
 		temp = 1;
 		while (stack->a[i + 1] && (stack->a[i] < stack->a[i + 1]))

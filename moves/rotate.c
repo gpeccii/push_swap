@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:00 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/22 20:13:04 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/27 15:09:10 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,10 @@ int	ra(t_stack *stack, int flag)
 	int	tmp;
 	int	j;
 
-	j = 0;
+	j = -1;
 	tmp = stack->a[0];
-	while (j < stack->current_a)
-	{
+	while (++j < stack->current_a)
 		stack->a[j] = stack->a[j + 1];
-		j++;
-	}
 	stack->a[stack->current_a] = tmp;
 	if (flag == 1)
 		write(1, "ra\n", 3);

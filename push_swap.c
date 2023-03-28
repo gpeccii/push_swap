@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:46 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/23 16:49:02 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/28 15:48:00 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,15 @@ static void	fill_stack(char **argv, t_stack *stack)
 
 	i = 0;
 	j = 1;
-	stack->a = (int *)ft_calloc(sizeof(int), (stack->current_a) + 1);
+	stack->a = malloc(sizeof(int) * (stack->current_a));
 	while (argv[j])
 		stack->a[i++] = ft_atoi(argv[j++]);
-	stack->a[i] = '\0';
-	stack->b = (int *)ft_calloc(sizeof(int), (stack->current_a) + 1);
+	stack->b = malloc(sizeof(int) * (stack->current_a));
 }
 
 int	main(int argc, char **argv)
 {
-	//int	i = 0;
+	int	i = 0;
 	t_stack	stack;
 
 	if (alpha_check(argv) == 0 || ft_checkdoubles(argv, argc) == 0)
@@ -36,7 +35,7 @@ int	main(int argc, char **argv)
 	else
 	{
 		stack.current_a = argc - 2;
-		stack.current_b = 0;
+		stack.current_b = -1;
 		fill_stack(argv, &stack);
 		if (argc == 3)
 			sort_two(&stack);
@@ -45,12 +44,13 @@ int	main(int argc, char **argv)
 		else if (argc > 4)
 			sort_big(&stack);
 	}
-	//while(stack.b[i])
-	//{
-	//	ft_printf("%d\n",stack.b[i]);
-	//	i++;
-	//}
-	free(stack.a);
-	free(stack.b);
+	while(i <= stack.current_a)
+	{
+		ft_printf("%d\n",stack.a[i]);
+		i++;
+	}
+	ft_printf("... %d", stack.n_moves);
+	//free(stack.a);
+	//free(stack.b);
 	return (0);
 }

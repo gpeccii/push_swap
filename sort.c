@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:14:02 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/23 16:43:24 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/28 15:42:01 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	sort_two(t_stack *stack)
 void	lis_to_b(t_stack *stack)
 {
 	int	i;
+	int	j;
 	int	t;
 	int	z;
 
@@ -60,6 +61,7 @@ void	lis_to_b(t_stack *stack)
 	t = stack->index_lis;
 	z = stack->size_lis + 1;
 	i = -1;
+	j = stack->current_a + 1;
 	if (stack->index_lis <= (stack->current_a / 2))
 	{
 		while (++i < t)
@@ -67,20 +69,92 @@ void	lis_to_b(t_stack *stack)
 	}
 	else if (stack->index_lis > (stack->current_a / 2))
 	{
-		while (t >= stack->index_lis)
-		{
+		while (--j >= t)
 			stack->n_moves += rra(stack, 1);
-			t--;
-		}
 	}
 	while (--z > 0)
 		stack->n_moves += pb(stack, 1);
 }
 
+static void	push_ordinate_in_b(t_stack *stack)
+{
+	int	k;
+
+	k = -1;
+	cheapest_move(stack);
+	count_moves_zero(stack->index_min, stack);
+	if (stack->index_min <= stack->index_insert_to)
+	{
+		while (++k < stack->index_min)
+			stack->n_moves += rr(stack, 1);
+		k = -1;
+		while (++k < (stack->index_insert_to - stack->index_min))
+			stack->n_moves += rb(stack, 1);
+		stack->n_moves += pb(stack, 1);
+	}
+	else
+	{
+		while (++k < stack->index_insert_to)
+			stack->n_moves += rr(stack, 1);
+		k = -1;
+		while (++k < (stack->index_min - stack->index_insert_to))
+			stack->n_moves += ra(stack, 1);
+		stack->n_moves += pb(stack, 1);
+	}
+}
+	//else if (stack->index_min > (stack->current_a / 2))
+	//{
+	//	n = count_moves_last(stack->index_min, stack);
+	//	if (stack->index_min >= stack->index_insert_to)
+	//	{
+	//		while (++k < (stack->current_b - stack->index_insert_to))
+	//			stack->n_moves += rrr(stack, 1);
+	//		k = -1;
+	//		while (++k < (stack->index_min - stack->index_insert_to))
+	//			stack->n_moves += rra(stack, 1);
+	//		stack->n_moves += pb(stack, 1);
+	//	}
+	//	else
+	//	{
+	//		while (++k < (stack->current_a - stack->index_min))
+	//			stack->n_moves += rrr(stack, 1);
+	//		k = -1;
+	//		while (++k < (stack->index_insert_to - stack->index_min))
+	//			stack->n_moves += rrb(stack, 1);
+	//		stack->n_moves += pb(stack, 1);
+	//	}
+	//}
+//}
+
+static void	find_max_and_rotate(t_stack *stack)
+{
+	int index;
+
+	index = find_max_b(stack);
+	if (index <= (stack->current_b / 2))
+	{
+		while (index > 0)
+		{
+			stack->n_moves += rb(stack, 1);
+			index--;
+		}
+	}
+	else if (index > (stack->current_b / 2))
+	{
+		while (index <= stack->current_b)
+		{
+			stack->n_moves += rrb(stack, 1);
+			index++;
+		}
+	}
+}
+
 void	sort_big(t_stack *stack)
 {
-	int	i;
 	lis_to_b(stack);
-	i = cheapest_move(stack);
-	ft_printf("%d\n", i);
+	while(stack->current_a >= 0)
+		push_ordinate_in_b(stack);
+	find_max_and_rotate(stack);
+	while(stack->current_b >= 0)
+		stack->n_moves += pa(stack, 1);
 }
