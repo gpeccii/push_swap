@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:48:27 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/28 15:35:03 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/28 17:00:49 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ int	find_max_b(t_stack *stack)
 	int	imax;;
 	int	max;
 
-	i = -1;
+	i = 0;
 	max = stack->b[0];
-	while (++i <= stack->current_b)
+	while (i <= stack->current_b)
 	{
 		if (stack->b[i] >= max)
 		{
 			max = stack->b[i];
 			imax = i;
 		}
+		i++;
 	}
 	return (imax);
 }
@@ -41,7 +42,7 @@ static int	find_min_b(t_stack *stack)
 	min = stack->b[0];
 	while (i <= stack->current_b)
 	{
-		if (stack->b[i] < min)
+		if (stack->b[i] <= min)
 		{
 			min = stack->b[i];
 			index = i;

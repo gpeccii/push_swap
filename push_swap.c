@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:46 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/28 15:48:00 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/28 16:44:50 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	fill_stack(char **argv, t_stack *stack)
 
 int	main(int argc, char **argv)
 {
-	int	i = 0;
+	//int	i = 0;
 	t_stack	stack;
 
 	if (alpha_check(argv) == 0 || ft_checkdoubles(argv, argc) == 0)
@@ -44,11 +44,11 @@ int	main(int argc, char **argv)
 		else if (argc > 4)
 			sort_big(&stack);
 	}
-	while(i <= stack.current_a)
-	{
-		ft_printf("%d\n",stack.a[i]);
-		i++;
-	}
+	//while(i <= stack.current_a)
+	//{
+	//	ft_printf("%d\n",stack.a[i]);
+	//	i++;
+	//}
 	ft_printf("... %d", stack.n_moves);
 	//free(stack.a);
 	//free(stack.b);
