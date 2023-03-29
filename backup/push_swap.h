@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enoviell <enoviell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:52 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/29 16:41:18 by enoviell         ###   ########.fr       */
+/*   Updated: 2023/03/28 13:27:51 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	lis(t_stack *stack);
 int		count_moves_zero(int i, t_stack *stack);
 int		cheapest_move(t_stack *stack);
 
-void	sort_five(t_stack *stack);
 void	sort_three(t_stack *stack);
 void	sort_two(t_stack *stack);
 void	lis_to_b(t_stack *stack);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enoviell <enoviell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:46 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/29 17:22:45 by enoviell         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:44:50 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,15 @@ static void	fill_stack(char **argv, t_stack *stack)
 
 	i = 0;
 	j = 1;
-	stack->a = malloc(sizeof(int) * (stack->current_a + 1));
+	stack->a = malloc(sizeof(int) * (stack->current_a));
 	while (argv[j])
-	{
-		stack->a[i] = ft_atoi(argv[j]);
-		i++;
-		j++;
-	}
-	stack->b = malloc(sizeof(int) * (stack->current_a+ 1));
+		stack->a[i++] = ft_atoi(argv[j++]);
+	stack->b = malloc(sizeof(int) * (stack->current_a));
 }
 
 int	main(int argc, char **argv)
 {
-	int	i = 0;
+	//int	i = 0;
 	t_stack	stack;
 
 	if (alpha_check(argv) == 0 || ft_checkdoubles(argv, argc) == 0)
@@ -41,31 +37,20 @@ int	main(int argc, char **argv)
 		stack.current_a = argc - 2;
 		stack.current_b = -1;
 		fill_stack(argv, &stack);
-
 		if (argc == 3)
 			sort_two(&stack);
 		else if (argc == 4)
 			sort_three(&stack);
-		 else if (argc == 6)
-			sort_five(&stack);
-		else if (argc > 5)
+		else if (argc > 4)
 			sort_big(&stack);
 	}
-	while(i <= stack.current_a)
-	{
-		ft_printf("%d\n",stack.a[i]);
-		i++;
-	}
-	i = 0;
-	ft_printf("-----------------\n");
-	while(i <= stack.current_b)
-	{
-		ft_printf("%d\n",stack.b[i]);
-		i++;
-	}
-
+	//while(i <= stack.current_a)
+	//{
+	//	ft_printf("%d\n",stack.a[i]);
+	//	i++;
+	//}
 	ft_printf("... %d", stack.n_moves);
-	free(stack.a);
-	free(stack.b);
+	//free(stack.a);
+	//free(stack.b);
 	return (0);
 }
