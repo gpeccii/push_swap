@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enoviell <enoviell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:52 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/29 16:41:18 by enoviell         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:23:06 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ typedef struct s_stack
 	int	n_moves;
 	int	index_insert_to;
 	int	index_min;
+
+	int	*dp;
+	int	*prev;
+	int *lis_raw;
+	int	lis_raw_len;
+	int	*lis;
+	int	lis_len;
+	int	lis_used;
+	int	len;
 }			t_stack;
 
 //push moves
@@ -62,5 +71,8 @@ void	sort_two(t_stack *stack);
 void	lis_to_b(t_stack *stack);
 void	sort_big(t_stack *stack);
 int		find_max_b(t_stack *stack);
+
+void	lis_finder(t_stack *stack);
+void	push_new_lis_to_b(t_stack *stack);
 
 #endif

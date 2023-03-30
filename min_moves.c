@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:48:27 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/28 17:00:49 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/30 11:56:23 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,12 @@ int	count_moves_zero(int i, t_stack *stack)
 	{
 		while (j <= stack->current_b)
 		{
-			//printf("DIOCANE\n");
-			//printf("jei = %d\n", j);
 			if (j != stack->current_b)
 			{
 				if ((stack->a[i] < stack->b[j]) && (stack->a[i] > stack->b[j + 1]))
 				{
 					j++;
 					stack->index_insert_to = j;
-					//printf("i = %d j = %d\n", i, j);
 					if (i <= j)
 						return (i + (j - i) + 1);
 					else if (i > j)
@@ -125,59 +122,26 @@ int	count_moves_zero(int i, t_stack *stack)
 			j++;
 		}
 	}
-	return (42);
+	return (-1);
 }
-
-//int	       count_moves_last(int i, t_stack *stack)
-//{
-//	int	j;
-
-//	j = stack->current_b;
-//	while (--j >= 0)
-//	{
-//		if (stack->a[i] < stack->b[j])
-//		{
-//			stack->index_insert_to = j;
-//			if (i >= j)
-//				return ((stack->current_b - j) + (i - j) + 1);
-//			else if (i < j)
-//				return ((stack->current_a - i) + (j - i) + 1);
-//		}
-//	}
-//	stack->index_insert_to = 0;
-//	return ((stack->current_a - i + 1));
-//}
 
 int	cheapest_move(t_stack *stack)
 {
 	int	i;
-	int	j;
 	int	n;
 	int	ret;
 
 	i = 0;
-	j = stack->current_a + 1;
 	ret = count_moves_zero(0, stack);
 	while (i <= stack->current_a)
 	{
 		n = count_moves_zero(i, stack);
-		if (n < ret)
+		if (n <= ret)
 		{
 			stack->index_min = i;
 			ret = n;
 		}
 		i++;
 	}
-	//while (--j >= (stack->current_a / 2))
-	//{
-	//	n = count_moves_last(j, stack);
-	//	if (n < ret)
-	//	{
-	//		stack->index_min = j;
-	//		ret = n;
-	//	}
-	//}
-	//ft_printf("\n");
-	//printf("min %d ret %d\n", stack->index_min, ret);
 	return (ret);
 }

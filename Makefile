@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: enoviell <enoviell@student.42.fr>          +#+  +:+       +#+         #
+#    By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/22 20:13:40 by gpecci            #+#    #+#              #
-#    Updated: 2023/03/29 14:49:26 by enoviell         ###   ########.fr        #
+#    Updated: 2023/03/30 14:08:12 by gpecci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS =	$(P1)push.c \
 		push_swap.c \
 		min_moves.c \
 		sort_five.c \
+		new_lis.c \
 
 OBJS = ${SRCS:.c=.o}
 

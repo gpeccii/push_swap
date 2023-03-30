@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enoviell <enoviell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:46 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/29 17:22:45 by enoviell         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:47:21 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	main(int argc, char **argv)
 			sort_two(&stack);
 		else if (argc == 4)
 			sort_three(&stack);
-		 else if (argc == 6)
+		else if (argc == 6)
 			sort_five(&stack);
-		else if (argc > 5)
+		else if (argc > 4)
 			sort_big(&stack);
 	}
 	while(i <= stack.current_a)
@@ -63,7 +63,6 @@ int	main(int argc, char **argv)
 		ft_printf("%d\n",stack.b[i]);
 		i++;
 	}
-
 	ft_printf("... %d", stack.n_moves);
 	free(stack.a);
 	free(stack.b);
