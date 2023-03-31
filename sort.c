@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:14:02 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/30 15:41:11 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/31 16:47:05 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,38 +78,74 @@ void	lis_to_b(t_stack *stack)
 
 static void	push_ordinate_in_b(t_stack *stack)
 {
+	int	i;
+	int	j;
 	int	k;
 
 	k = -1;
 	cheapest_move(stack);
-	count_moves_zero(stack->index_min, stack);
-	if (stack->index_min <= stack->index_insert_to)
+	count_moves(stack->index_min, stack);
+	i = stack->index_min;
+	j = stack->index_insert_to;
+	if ((i <= (stack->current_a / 2)) && (j <= (stack->current_b / 2)))
 	{
-		while (++k < stack->index_min)
-			stack->n_moves += rr(stack, 1);
-		k = -1;
-		while (++k < (stack->index_insert_to - stack->index_min))
+		if (i <= j)
 		{
-			//if ((stack->index_insert_to - stack->index_min) <= (stack->current_b / 2))
+			while (++k < i)
+				stack->n_moves += rr(stack, 1);
+			k = -1;
+			while (++k < (j - i))
 				stack->n_moves += rb(stack, 1);
-			//else
-			//	stack->n_moves += rrb(stack, 1);
+			stack->n_moves += pb(stack, 1);
 		}
+		else if (i > j)
+		{
+			while (++k < j)
+				stack->n_moves += rr(stack, 1);
+			k = -1;
+			while (++k < (i - j))
+				stack->n_moves += ra(stack, 1);
+			stack->n_moves += pb(stack, 1);
+		}
+	}
+	else if ((i <= (stack->current_a / 2)) && (j > (stack->current_b / 2)))
+	{
+		while (++k < i)
+			stack->n_moves += ra(stack, 1);
+		k = -1;
+		while (++k <= (stack->current_b - j))
+			stack->n_moves += rrb(stack, 1);
 		stack->n_moves += pb(stack, 1);
 	}
-	else
+	else if ((i > (stack->current_a / 2)) && (j <= (stack->current_b / 2)))
 	{
-		while (++k < stack->index_insert_to)
-			stack->n_moves += rr(stack, 1);
+		while (++k <= (stack->current_a - i))
+			stack->n_moves += rra(stack, 1);
 		k = -1;
-		while (++k < (stack->index_min - stack->index_insert_to))
-		{
-			//if ((stack->index_insert_to - stack->index_min) <= (stack->current_a / 2))
-				stack->n_moves += ra(stack, 1);
-			//else
-			//	stack->n_moves += rra(stack, 1);
-		}
+		while (++k < j)
+			stack->n_moves += rb(stack, 1);
 		stack->n_moves += pb(stack, 1);
+	}
+	else if ((i > (stack->current_a / 2)) && (j > (stack->current_b / 2)))
+	{
+		if (i <= j)
+		{
+			while (++k <= (stack->current_b - j))
+				stack->n_moves += rrr(stack, 1);
+			k = -1;
+			while (++k < (j - i))
+				stack->n_moves += rra(stack, 1);
+			stack->n_moves += pb(stack, 1);
+		}
+		else if (i > j)
+		{
+			while (++k <= (stack->current_a - i))
+				stack->n_moves += rrr(stack, 1);
+			k = -1;
+			while (++k < (i - j))
+				stack->n_moves += rrb(stack, 1);
+			stack->n_moves += pb(stack, 1);
+		}
 	}
 }
 
@@ -138,15 +174,14 @@ static void	find_max_and_rotate(t_stack *stack)
 
 void	sort_big(t_stack *stack)
 {
-	//lis_finder(stack);
-	//push_new_lis_to_b(stack);
+	lis_finder(stack);
+	push_new_lis_to_b(stack);
 	//stack->n_moves += pb(stack, 1);
 	//stack->n_moves += pb(stack, 1);
-	lis_to_b(stack);
-	while(stack->current_a >= 0)
+	//lis_to_b(stack);
+	while (stack->current_a >= 0)
 		push_ordinate_in_b(stack);
 	find_max_and_rotate(stack);
-	while(stack->current_b >= 0)
-		stack->n_moves += pa(stack, 1);
+	//while(stack->current_b >= 0)
+	//	stack->n_moves += pa(stack, 1);
 }
-

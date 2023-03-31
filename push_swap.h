@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:52 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/30 14:23:06 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/31 15:28:04 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		ft_checkdoubles(char **argv, int argc);
 
 void	lis(t_stack *stack);
 
-int		count_moves_zero(int i, t_stack *stack);
+int		count_moves(int i, t_stack *stack);
 int		cheapest_move(t_stack *stack);
 
 void	sort_five(t_stack *stack);
@@ -71,6 +71,8 @@ void	sort_two(t_stack *stack);
 void	lis_to_b(t_stack *stack);
 void	sort_big(t_stack *stack);
 int		find_max_b(t_stack *stack);
+int		find_max_a(t_stack *stack);
+int		find_min_a(t_stack *stack);
 
 void	lis_finder(t_stack *stack);
 void	push_new_lis_to_b(t_stack *stack);

@@ -6,50 +6,42 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 13:37:38 by enoviell          #+#    #+#             */
-/*   Updated: 2023/03/30 11:42:26 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/31 13:07:41 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	find_max_a(t_stack *stack)
-{
-	int	i;
-	int	max;
-	int	index;
-
-	i = 0;
-	max = stack->a[0];
-	while (i <= stack->current_a)
-	{
-		if (stack->a[i] >= max)
-		{
-			max = stack-> a[i];
-			index = i;
-		}
-		i++;
-	}
-	return (index);
-}
-
-static int	find_min_a(t_stack *stack)
+int	find_min_a(t_stack *stack)
 {
 	int	i;
 	int	min;
-	int	index;
 
 	i = 0;
 	min = stack->a[0];
 	while (i <= stack->current_a)
 	{
 		if (stack->a[i] <= min)
-		{
-			min = stack->a[i];
-			index = i;
-		}
+			min = stack->b[i];
 		i++;
 	}
-	return (index);
+	return (min);
+}
+
+int	find_max_a(t_stack *stack)
+{
+	int	i;
+	int	max;
+
+	i = 0;
+	max = stack->a[0];
+	while (i <= stack->current_a)
+	{
+		if (stack->a[i] >= max)
+			max = stack->b[i];
+		i++;
+	}
+	return (max);
 }
 
 static void	push_min_max(t_stack *stack)
