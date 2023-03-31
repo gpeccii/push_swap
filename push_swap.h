@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:52 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/31 15:28:04 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/31 18:51:09 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,10 @@ void	sort_three(t_stack *stack);
 void	sort_two(t_stack *stack);
 void	lis_to_b(t_stack *stack);
 void	sort_big(t_stack *stack);
-int		find_max_b(t_stack *stack);
-int		find_max_a(t_stack *stack);
-int		find_min_a(t_stack *stack);
+int		find_index_min_b(t_stack *stack);
+int		find_index_max_b(t_stack *stack);
+int		find_index_min_a(t_stack *stack);
+int		find_index_max_a(t_stack *stack);
 
 void	lis_finder(t_stack *stack);
 void	push_new_lis_to_b(t_stack *stack);

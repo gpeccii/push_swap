@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:24 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/22 20:13:26 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/31 18:42:30 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_checkdoubles(char **argv, int argc)
 	i = 1;
 	j = 0;
 	ret = 1;
-	tmp = ft_calloc (sizeof(int), (argc - 1));
+	tmp = ft_calloc (sizeof(int), (argc));
 	if (!tmp)
 		return (0);
 	while (argv[i])

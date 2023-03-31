@@ -6,13 +6,13 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:48:27 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/31 16:21:51 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/03/31 18:52:10 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_max_b(t_stack *stack)
+int	find_index_max_b(t_stack *stack)
 {
 	int	i;
 	int	imax;;
@@ -33,7 +33,7 @@ int	find_max_b(t_stack *stack)
 	return (imax);
 }
 
-static int	find_min_b(t_stack *stack)
+int	find_index_min_b(t_stack *stack)
 {
 	int	i;
 	int	index;
@@ -61,8 +61,8 @@ int	count_moves(int i, t_stack *stack)
 	int	max;
 
 	j = 0;
-	min = find_min_b(stack);
-	max = find_max_b(stack);
+	min = find_index_min_b(stack);
+	max = find_index_max_b(stack);
 	if (stack->a[i] > stack->b[max])
 	{
 		stack->index_insert_to = max;
@@ -74,7 +74,7 @@ int	count_moves(int i, t_stack *stack)
 			else
 				return (j + (i - j) + 1);
 		}
-		else if (i <= (stack->current_a / 2) && j >= (stack->current_b / 2))
+		else if (i <= (stack->current_a / 2) && j > (stack->current_b / 2))
 			return (i + (stack->current_b - j + 1) + 1);
 		else if (i > (stack->current_a / 2) && j <= (stack->current_b / 2))
 			return ((stack->current_a - i + 1) + j + 1);
@@ -82,7 +82,7 @@ int	count_moves(int i, t_stack *stack)
 		{
 			if (i <= j)
 				return ((stack->current_b - j + 1) + (j - i) + 1);
-			else
+			else if (i > j)
 				return ((stack->current_a - i + 1) + (i - j) + 1);
 		}
 	}
@@ -94,8 +94,8 @@ int	count_moves(int i, t_stack *stack)
 			j = 0;
 			if (i <= (stack->current_a) / 2)
 					return (i + 1);
-			else
-				return (stack->current_a - i + 1);
+			else if (i > stack->current_a / 2)
+				return ((stack->current_a - i) + 1);
 		}
 		else if (min != stack->current_b)
 		{
@@ -105,10 +105,10 @@ int	count_moves(int i, t_stack *stack)
 			{
 				if (i <= j)
 					return (i + (j - i) + 1);
-				else
+				else if (i > j)
 					return (j + (i - j) + 1);
 			}
-			else if (i <= (stack->current_a / 2) && j >= (stack->current_b / 2))
+			else if (i <= (stack->current_a / 2) && j > (stack->current_b / 2))
 				return (i + (stack->current_b - j + 1) + 1);
 			else if (i > (stack->current_a / 2) && j <= (stack->current_b / 2))
 				return ((stack->current_a - i + 1) + j + 1);
@@ -116,7 +116,7 @@ int	count_moves(int i, t_stack *stack)
 			{
 				if (i <= j)
 					return ((stack->current_b - j + 1) + (j - i) + 1);
-				else
+				else if (i > j)
 					return ((stack->current_a - i + 1) + (i - j) + 1);
 			}
 		}
@@ -135,10 +135,10 @@ int	count_moves(int i, t_stack *stack)
 					{
 						if (i <= j)
 							return (i + (j - i) + 1);
-						else
+						else if (i > j)
 							return (j + (i - j) + 1);
 					}
-					else if (i <= (stack->current_a / 2) && j >= (stack->current_b / 2))
+					else if (i <= (stack->current_a / 2) && j > (stack->current_b / 2))
 						return (i + (stack->current_b - j + 1) + 1);
 					else if (i > (stack->current_a / 2) && j <= (stack->current_b / 2))
 						return ((stack->current_a - i + 1) + j + 1);
@@ -146,7 +146,7 @@ int	count_moves(int i, t_stack *stack)
 					{
 						if (i <= j)
 							return ((stack->current_b - j + 1) + (j - i) + 1);
-						else
+						else if (i > j)
 							return ((stack->current_a - i + 1) + (i - j) + 1);
 					}
 				}
@@ -156,17 +156,17 @@ int	count_moves(int i, t_stack *stack)
 				if ((stack->a[i] < stack->b[j]) && (stack->a[i] > stack->b[0]))
 				{
 					j = 0;
-					stack->index_insert_to = j;
+					stack->index_insert_to = 0;
 					if (i <= stack->current_a / 2)
 						return (i + 1);
-					else
+					else if (i > stack->current_a / 2)
 						return ((stack->current_a - i + 1) + 1);
 				}
 			}
 			j++;
 		}
 	}
-	return (-1);
+	return (5000);
 }
 
 int	cheapest_move(t_stack *stack)
