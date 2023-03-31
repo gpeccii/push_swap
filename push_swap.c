@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 		ft_printf("%d\n",stack.b[i]);
 		i++;
 	}
-	ft_printf("... %d", stack.n_moves);
+	ft_printf("... %d\n", stack.n_moves);
 	free(stack.a);
 	free(stack.b);
 	return (0);

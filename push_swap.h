@@ -71,8 +71,6 @@ void	sort_two(t_stack *stack);
 void	lis_to_b(t_stack *stack);
 void	sort_big(t_stack *stack);
 int		find_max_b(t_stack *stack);
-int		find_max_a(t_stack *stack);
-int		find_min_a(t_stack *stack);
 
 void	lis_finder(t_stack *stack);
 void	push_new_lis_to_b(t_stack *stack);
