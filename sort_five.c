@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_five.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gp <gp@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 13:37:38 by enoviell          #+#    #+#             */
-/*   Updated: 2023/03/31 18:52:53 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/01 15:12:22 by gp               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,8 @@ static void	push_min_max(t_stack *stack)
 	int	max;
 	int	min;
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	max = find_index_max_a(stack);
 	min = find_index_min_a(stack);
 	while (i < min)
@@ -85,10 +83,8 @@ static void	push_max_min(t_stack *stack)
 	int	max;
 	int	min;
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	max = find_index_max_a(stack);
 	min = find_index_min_a(stack);
 	while (i < max)
@@ -110,11 +106,7 @@ void	sort_five(t_stack *stack)
 {
 	int	max;
 	int	min;
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
+	
 	max = find_index_max_a(stack);
 	min = find_index_min_a(stack);
 	if (min < max)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gpeccstack->index_min <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 20:14:02 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/31 20:19:42 by gpecci           ###   ########.fr       */
+/*   Created: 2023/03/22 20:14:02 by gpeccstack->index_min            #+#    #+#             */
+/*   Updated: 2023/03/31 20:19:42 by gpeccstack->index_min           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,26 +78,22 @@ void	lis_to_b(t_stack *stack)
 
 static void	push_ordinate_in_b(t_stack *stack)
 {
-	int	i;
-	int	j;
 	int	k;
 
 	k = 0;
 	cheapest_move(stack);
 	count_moves(stack->index_min, stack);
-	i = stack->index_min;
-	j = stack->index_insert_to;
-	if ((i <= (stack->current_a / 2)) && (j <= (stack->current_b / 2)))
+	if ((stack->index_min <= (stack->current_a / 2)) && (stack->index_insert_to <= (stack->current_b / 2)))
 	{
-		if (i <= j)
+		if (stack->index_min <= stack->index_insert_to)
 		{
-			while (k < i)
+			while (k < stack->index_min)
 			{
 				stack->n_moves += rr(stack, 1);
 				k++;
 			}
 			k = 0;
-			while (k < (j - i))
+			while (k < (stack->index_insert_to - stack->index_min))
 			{
 				stack->n_moves += rb(stack, 1);
 				k++;
@@ -105,15 +101,15 @@ static void	push_ordinate_in_b(t_stack *stack)
 			stack->n_moves += pb(stack, 1);
 			return ;
 		}
-		else if (i > j)
+		else if (stack->index_min > stack->index_insert_to)
 		{
-			while (k < j)
+			while (k < stack->index_insert_to)
 			{
 				stack->n_moves += rr(stack, 1);
 				k++;
 			}
 			k = 0;
-			while (k < (i - j))
+			while (k < (stack->index_min - stack->index_insert_to))
 			{
 				stack->n_moves += ra(stack, 1);
 				k++;
@@ -122,15 +118,15 @@ static void	push_ordinate_in_b(t_stack *stack)
 			return ;
 		}
 	}
-	else if ((i <= (stack->current_a / 2)) && (j > (stack->current_b / 2)))
+	else if ((stack->index_min <= (stack->current_a / 2)) && (stack->index_insert_to > (stack->current_b / 2)))
 	{
-		while (k < i)
+		while (k < stack->index_min)
 		{
 			stack->n_moves += ra(stack, 1);
 			k++;
 		}
 		k = 0;
-		while (k <= (stack->current_b - j))
+		while (k <= (stack->current_b - stack->index_insert_to))
 		{
 			stack->n_moves += rrb(stack, 1);
 			k++;
@@ -138,15 +134,15 @@ static void	push_ordinate_in_b(t_stack *stack)
 		stack->n_moves += pb(stack, 1);
 		return ;
 	}
-	else if ((i > (stack->current_a / 2)) && (j <= (stack->current_b / 2)))
+	else if ((stack->index_min > (stack->current_a / 2)) && (stack->index_insert_to <= (stack->current_b / 2)))
 	{
-		while (k <= (stack->current_a - i))
+		while (k <= (stack->current_a - stack->index_min))
 		{
 			stack->n_moves += rra(stack, 1);
 			k++;
 		}
 		k = 0;
-		while (k < j)
+		while (k < stack->index_insert_to)
 		{
 			stack->n_moves += rb(stack, 1);
 			k++;
@@ -154,33 +150,33 @@ static void	push_ordinate_in_b(t_stack *stack)
 		stack->n_moves += pb(stack, 1);
 		return ;
 	}
-	else if ((i > (stack->current_a / 2)) && (j > (stack->current_b / 2)))
+	else if ((stack->index_min > (stack->current_a / 2)) && (stack->index_insert_to > (stack->current_b / 2)))
 	{
-		if (i <= j && stack->current_a >= stack->current_b)
+		if ((stack->current_a - stack->index_min) <= (stack->current_b - stack->index_insert_to))
 		{
-			while (k <= (stack->current_b - j))
+			while (k <= (stack->current_a - stack->index_min))
 			{
 				stack->n_moves += rrr(stack, 1);
 				k++;
 			}
 			k = 0;
-			while (k < (stack->current_a - i) - (stack->current_b - j))
+			while (k < (stack->current_b - stack->index_insert_to) - (stack->current_a - stack->index_min))
 			{
-				stack->n_moves += rra(stack, 1);
+				stack->n_moves += rrb(stack, 1);
 				k++;
 			}
 			stack->n_moves += pb(stack, 1);
 			return ;
 		}
-		else if (i >= j && stack->current_a < stack->current_b)
+		else if ((stack->current_a - stack->index_min) > (stack->current_b - stack->index_insert_to))
 		{
-			while (k <= (stack->current_a - i))
+			while (k <= (stack->current_b - stack->index_insert_to))
 			{
 				stack->n_moves += rrr(stack, 1);
 				k++;
 			}
 			k = 0;
-			while (k < (stack->current_b - j) - (stack->current_a - i))
+			while (k < (stack->current_a - stack->index_min) - (stack->current_b - stack->index_insert_to))
 			{
 				stack->n_moves += rrb(stack, 1);
 				k++;
@@ -220,26 +216,41 @@ void	sort_big(t_stack *stack)
 	//push_new_lis_to_b(stack);
 	stack->n_moves += pb(stack, 1);
 	stack->n_moves += pb(stack, 1);
-	//lis_to_b(stack);
+	// lis_to_b(stack);
 	//rr(stack, 1);
 	while (stack->current_a >= 0)
-		push_ordinate_in_b(stack);
-		//push_ordinate_in_b(stack);
-		//push_ordinate_in_b(stack);
-		//push_ordinate_in_b(stack);
-		//push_ordinate_in_b(stack);
-		//push_ordinate_in_b(stack);
-		//push_ordinate_in_b(stack);
-		//push_ordinate_in_b(stack);
-		//push_ordinate_in_b(stack);
-		//push_ordinate_in_b(stack);
-		//push_ordinate_in_b(stack);
-		//push_ordinate_in_b(stack);
-		//cheapest_move(stack);
-		//count_moves(stack->index_min, stack);
-		//printf("ca = %d , cb = %d\n", stack->current_a, stack->current_b);
-		//printf("i = %d , j = %d\n", stack->index_min, stack->index_insert_to);
-	find_max_and_rotate(stack);
-	while(stack->current_b >= 0)
-		stack->n_moves += pa(stack, 1);
+	{
+		if (find_index_min_b(stack) == 0)
+			find_max_and_rotate(stack);
+		push_ordinate_in_b(stack);	
+	}
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// push_ordinate_in_b(stack);
+		// ft_printf("numero %d\n", cheapest_move(stack));
+		// cheapest_move(stack);
+		// count_moves(stack->index_min, stack);
+		// printf("ca = %d , cb = %d\n", stack->current_a, stack->current_b);
+		// printf("stack->index_min = %d , stack->index_insert_to = %d\n", stack->index_min, stack->index_insert_to);
+	// find_max_and_rotate(stack);
+	// while(stack->current_b >= 0)
+	// 	stack->n_moves += pa(stack, 1);
 }

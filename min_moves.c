@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   min_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gp <gp@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:48:27 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/31 18:52:10 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/01 17:04:35 by gp               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ int	count_moves(int i, t_stack *stack)
 			return ((stack->current_a - i + 1) + j + 1);
 		else if (i > (stack->current_a / 2) && j > (stack->current_b / 2))
 		{
-			if (i <= j)
-				return ((stack->current_b - j + 1) + (j - i) + 1);
-			else if (i > j)
-				return ((stack->current_a - i + 1) + (i - j) + 1);
+			if ((stack->current_a - i) <= (stack->current_b - j))
+				return ((stack->current_a - i + 1) + ((stack->current_b - j) - (stack->current_a - i))  + 1);
+			else if ((stack->current_a - i) > (stack->current_b - j))
+				return ((stack->current_b - j + 1) + ((stack->current_a - i) - (stack->current_b - j)) + 1);
 		}
 	}
 	else if (stack->a[i] < stack->b[min])
@@ -95,7 +95,7 @@ int	count_moves(int i, t_stack *stack)
 			if (i <= (stack->current_a) / 2)
 					return (i + 1);
 			else if (i > stack->current_a / 2)
-				return ((stack->current_a - i) + 1);
+				return ((stack->current_a - i + 1) + 1);
 		}
 		else if (min != stack->current_b)
 		{
@@ -114,10 +114,10 @@ int	count_moves(int i, t_stack *stack)
 				return ((stack->current_a - i + 1) + j + 1);
 			else if (i > (stack->current_a / 2) && j > (stack->current_b / 2))
 			{
-				if (i <= j)
-					return ((stack->current_b - j + 1) + (j - i) + 1);
-				else if (i > j)
-					return ((stack->current_a - i + 1) + (i - j) + 1);
+				if ((stack->current_a - i) <= (stack->current_b - j))
+					return ((stack->current_a - i + 1) + ((stack->current_b - j) - (stack->current_a - i))  + 1);
+				else if ((stack->current_a - i) > (stack->current_b - j))
+					return ((stack->current_b - j + 1) + ((stack->current_a - i) - (stack->current_b - j)) + 1);
 			}
 		}
 	}
@@ -144,10 +144,10 @@ int	count_moves(int i, t_stack *stack)
 						return ((stack->current_a - i + 1) + j + 1);
 					else if (i > (stack->current_a / 2) && j > (stack->current_b / 2))
 					{
-						if (i <= j)
-							return ((stack->current_b - j + 1) + (j - i) + 1);
-						else if (i > j)
-							return ((stack->current_a - i + 1) + (i - j) + 1);
+						if ((stack->current_a - i) <= (stack->current_b - j))
+							return ((stack->current_a - i + 1) + ((stack->current_b - j) - (stack->current_a - i))  + 1);
+						else if ((stack->current_a - i) > (stack->current_b - j))
+							return ((stack->current_b - j + 1) + ((stack->current_a - i) - (stack->current_b - j)) + 1);
 					}
 				}
 			}
@@ -166,7 +166,7 @@ int	count_moves(int i, t_stack *stack)
 			j++;
 		}
 	}
-	return (5000);
+	return (500);
 }
 
 int	cheapest_move(t_stack *stack)
