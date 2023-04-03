@@ -6,11 +6,11 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 13:37:38 by enoviell          #+#    #+#             */
-/*   Updated: 2023/04/03 13:44:15 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 17:28:22 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	find_index_min_a(t_stack *stack)
 {

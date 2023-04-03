@@ -6,11 +6,11 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:44:51 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/03 16:44:55 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 17:28:18 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	funz(t_stack *stack, int i, int j)
 {

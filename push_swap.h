@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:52 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/03 16:12:06 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 17:20:29 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ void	comb2(t_stack *stack, int i, int j);
 void	comb3(t_stack *stack, int i, int j);
 void	comb4_1(t_stack *stack, int i, int j);
 void	comb4_2(t_stack *stack, int i, int j);
+
+int		max_to_insert(t_stack *stack, int i, int j, int max);
+int		min_to_insert(t_stack *stack, int i, int j, int min);
+int		middle_insert(t_stack *stack, int i, int j);
+
+int		ft_sorted(t_stack *stack);
 
 void	sort_two(t_stack *stack);
 void	sort_three(t_stack *stack);
