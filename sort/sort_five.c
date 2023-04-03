@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 13:37:38 by enoviell          #+#    #+#             */
-/*   Updated: 2023/04/03 17:28:22 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 19:02:35 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	find_index_min_a(t_stack *stack)
 	{
 		if (stack->a[i] < min)
 		{
-			min = stack->b[i];
+			min = stack->a[i];
 			index = i;
 		}
 		i++;
@@ -46,7 +46,7 @@ int	find_index_max_a(t_stack *stack)
 	{
 		if (stack->a[i] > max)
 		{
-			max = stack->b[i];
+			max = stack->a[i];
 			index = i;
 		}
 		i++;
@@ -111,7 +111,7 @@ void	sort_five(t_stack *stack)
 	min = find_index_min_a(stack);
 	if (min < max)
 		push_min_max(stack);
-	else
+	else if (max > min)
 		push_max_min(stack);
 	sort_three(stack);
 	if (stack->b[0] > stack->b[1])
@@ -119,6 +119,4 @@ void	sort_five(t_stack *stack)
 	stack->n_moves += pa(stack, 1);
 	stack->n_moves += pa(stack, 1);
 	stack->n_moves += ra(stack, 1);
-	free(stack->a);
-	free(stack->b);
 }

@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:29:05 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/03 17:28:28 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 18:42:55 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,4 @@ void	sort_two(t_stack *stack)
 	b = stack->a[1];
 	if (a > b)
 		stack->n_moves += sa(stack, 1);
-	free(stack->a);
-	free(stack->b);
 }

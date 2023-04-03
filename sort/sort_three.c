@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:29:30 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/03 17:28:25 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 18:42:50 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,4 @@ void	sort_three(t_stack *stack)
 	}
 	else if (a < b && b > c && c < a)
 		stack->n_moves += rra(stack, 1);
-	free(stack->a);
-	free(stack->b);
 }

@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:44:51 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/03 17:28:18 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 19:01:41 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,4 @@ void	sort_big(t_stack *stack)
 	find_max_and_rotate(stack);
 	while (stack->last_b >= 0)
 		stack->n_moves += pa(stack, 1);
-	free(stack->a);
-	free(stack->b);
 }
