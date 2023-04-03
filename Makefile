@@ -6,7 +6,7 @@
 #    By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/22 20:13:40 by gpecci            #+#    #+#              #
-#    Updated: 2023/04/03 13:31:41 by gpecci           ###   ########.fr        #
+#    Updated: 2023/04/03 13:55:04 by gpecci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ SRCS =	$(P1)push.c \
 		$(P1)together.c \
 		check.c \
 		min_moves.c \
-		comb.c \
+		comb1.c \
+		comb2_comb3.c \
+		comb4.c \
 		sort_two.c \
 		sort_three.c \
 		sort_five.c \

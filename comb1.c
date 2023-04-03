@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   comb.c                                             :+:      :+:    :+:   */
+/*   comb1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:30:48 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/03 13:34:12 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 13:50:32 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	comb1_1(t_stack *stack)
+void	comb1_1(t_stack *stack, int i, int j)
 {
 	int	k;
 
 	k = 0;
-	while (k < stack->index_min)
+	while (k < i)
 	{
 		stack->n_moves += rr(stack, 1);
 		k++;
 	}
 	k = 0;
-	while (k < (stack->index_insert_to - stack->index_min))
+	while (k < (j - i))
 	{
 		stack->n_moves += rb(stack, 1);
 		k++;
@@ -32,18 +32,18 @@ void	comb1_1(t_stack *stack)
 	return ;
 }
 
-void	comb1_2(t_stack *stack)
+void	comb1_2(t_stack *stack, int i, int j)
 {
 	int	k;
 
 	k = 0;
-	while (k < stack->index_insert_to)
+	while (k < j)
 	{
 		stack->n_moves += rr(stack, 1);
 		k++;
 	}
 	k = 0;
-	while (k < (stack->index_min - stack->index_insert_to))
+	while (k < (i - j))
 	{
 		stack->n_moves += ra(stack, 1);
 		k++;

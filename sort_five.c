@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 13:37:38 by enoviell          #+#    #+#             */
-/*   Updated: 2023/04/03 13:08:33 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 13:44:15 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	find_index_min_a(t_stack *stack)
 	i = 0;
 	min = stack->a[0];
 	index = 0;
-	while (i <= stack->current_a)
+	while (i <= stack->last_a)
 	{
 		if (stack->a[i] < min)
 		{
@@ -42,7 +42,7 @@ int	find_index_max_a(t_stack *stack)
 	i = 0;
 	max = stack->a[0];
 	index = 0;
-	while (i <= stack->current_a)
+	while (i <= stack->last_a)
 	{
 		if (stack->a[i] > max)
 		{

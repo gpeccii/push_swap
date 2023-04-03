@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:52 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/03 13:23:41 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 14:16:28 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ typedef struct s_stack
 {
 	int	*a;
 	int	*b;
-	int	current_a;
-	int	current_b;
+	int	last_a;
+	int	last_b;
 	int	n_moves;
-	int	index_insert_to;
+	int	index_to;
 	int	index_min;
 }			t_stack;
 
@@ -48,9 +48,18 @@ int		rrr(t_stack *stack, int flag);
 
 int		number_check(char **argv);
 int		ft_checkdoubles(char **argv, int argc);
+int		checkone(char *str);
+int		ft_checkdoubles_2(char *argv);
 
 int		count_moves(int i, t_stack *stack);
 int		cheapest_move(t_stack *stack);
+
+void	comb1_1(t_stack *stack, int i, int j);
+void	comb1_2(t_stack *stack, int i, int j);
+void	comb2(t_stack *stack, int i, int j);
+void	comb3(t_stack *stack, int i, int j);
+void	comb4_1(t_stack *stack, int i, int j);
+void	comb4_2(t_stack *stack, int i, int j);
 
 void	sort_two(t_stack *stack);
 void	sort_three(t_stack *stack);
