@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:52 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/03 14:16:28 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 16:12:06 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		rrr(t_stack *stack, int flag);
 int		number_check(char **argv);
 int		ft_checkdoubles(char **argv, int argc);
 int		checkone(char *str);
-int		ft_checkdoubles_2(char *argv);
+int		ft_checkdoubles_2(char *str);
 
 int		count_moves(int i, t_stack *stack);
 int		cheapest_move(t_stack *stack);

@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:24 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/03 14:20:44 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 16:43:54 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,35 +68,47 @@ int	checkone(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] != 32 || (str[i] < 48 && str[i] > 57))
+		if (str[i] != 32 && (str[i] < 48 && str[i] > 57))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	ft_checkdoubles_2(char *argv)
+static int	dup_mine(int *check, int k, int i)
+{
+	int	j;
+
+	while (++k < (i - 1))
+	{
+		j = k + 1;
+		while (++j < i)
+		{
+			if (check[k] == check[j])
+				return (0);
+		}
+	}
+	return (1);
+}
+
+int	ft_checkdoubles_2(char *str)
 {
 	int		i;
-	int		j;
+	int		k;
 	char	**tmp;
 	int		*check;
 
-	i = -1;
-	tmp = ft_split(argv, ' ');
-	while (tmp[++i])
-	check = malloc (sizeof(int) * i);
-	i = -1;
-	while (tmp[++i])
-		check[i] = ft_atoi(tmp[i]);
-	i = -1;
-	j = 0;
-	while (check[++i])
-	{
-		while (check[++j])
-			if (check[i] == check[j])
-				return (0);
-	}
+	i = 0;
+	tmp = ft_split(str, ' ');
+	while (tmp[i])
+		i++;
+	check = malloc(sizeof(int) * i);
+	k = -1;
+	while (++k < i)
+		check[k] = ft_atoi(tmp[k]);
+	k = -1;
+	if (dup_mine(check, k, i) == 0)
+		return (0);
 	free(tmp);
 	free(check);
 	return (1);

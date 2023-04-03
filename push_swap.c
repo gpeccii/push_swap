@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:46 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/03 14:21:17 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 16:56:33 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,26 @@ static void	fill_stackone(char **argv, t_stack *stack)
 	}
 	stack->b = malloc(sizeof(int) * (stack->last_a + 1));
 }
+static int	ft_sorted(t_stack *stack)
+{
+	int i;
 
+	i = 0;
+	while (i < stack->last_a)
+	{
+		if (stack->a[i] > stack->a[i + 1])
+			return (1);
+		i++;
+	}
+	return (0);
+}
 static void	sort(t_stack *stack)
 {
-	if (stack->last_a == 3)
+	if (ft_sorted(stack) == 0)
+		return ;
+	if (stack->last_a == 1)
+		return ;
+	else if (stack->last_a == 3)
 		sort_two(stack);
 	else if (stack->last_a == 4)
 		sort_three(stack);
@@ -87,4 +103,5 @@ int	main(int argc, char **argv)
 		fill_stack(argc, argv, &stack);
 	}
 	sort(&stack);
+	return (0);
 }
