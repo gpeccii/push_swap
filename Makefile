@@ -6,7 +6,7 @@
 #    By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/22 20:13:40 by gpecci            #+#    #+#              #
-#    Updated: 2023/03/30 14:08:12 by gpecci           ###   ########.fr        #
+#    Updated: 2023/04/03 13:31:41 by gpecci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,13 @@ SRCS =	$(P1)push.c \
 		$(P1)swap.c \
 		$(P1)together.c \
 		check.c \
-		lis.c \
-		sort.c \
-		push_swap.c \
 		min_moves.c \
+		comb.c \
+		sort_two.c \
+		sort_three.c \
 		sort_five.c \
-		new_lis.c \
+		sort_big.c \
+		push_swap.c \
 
 OBJS = ${SRCS:.c=.o}
 

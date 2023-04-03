@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   min_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gp <gp@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:48:27 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/01 17:04:35 by gp               ###   ########.fr       */
+/*   Updated: 2023/04/03 13:25:42 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	find_index_max_b(t_stack *stack)
 {
 	int	i;
-	int	imax;;
+	int	imax;
 	int	max;
 
 	i = 0;
@@ -81,7 +81,7 @@ int	count_moves(int i, t_stack *stack)
 		else if (i > (stack->current_a / 2) && j > (stack->current_b / 2))
 		{
 			if ((stack->current_a - i) <= (stack->current_b - j))
-				return ((stack->current_a - i + 1) + ((stack->current_b - j) - (stack->current_a - i))  + 1);
+				return ((stack->current_a - i + 1) + ((stack->current_b - j) - (stack->current_a - i)) + 1);
 			else if ((stack->current_a - i) > (stack->current_b - j))
 				return ((stack->current_b - j + 1) + ((stack->current_a - i) - (stack->current_b - j)) + 1);
 		}
@@ -93,7 +93,7 @@ int	count_moves(int i, t_stack *stack)
 			stack->index_insert_to = 0;
 			j = 0;
 			if (i <= (stack->current_a) / 2)
-					return (i + 1);
+				return (i + 1);
 			else if (i > stack->current_a / 2)
 				return ((stack->current_a - i + 1) + 1);
 		}
@@ -115,7 +115,7 @@ int	count_moves(int i, t_stack *stack)
 			else if (i > (stack->current_a / 2) && j > (stack->current_b / 2))
 			{
 				if ((stack->current_a - i) <= (stack->current_b - j))
-					return ((stack->current_a - i + 1) + ((stack->current_b - j) - (stack->current_a - i))  + 1);
+					return ((stack->current_a - i + 1) + ((stack->current_b - j) - (stack->current_a - i)) + 1);
 				else if ((stack->current_a - i) > (stack->current_b - j))
 					return ((stack->current_b - j + 1) + ((stack->current_a - i) - (stack->current_b - j)) + 1);
 			}
@@ -145,7 +145,7 @@ int	count_moves(int i, t_stack *stack)
 					else if (i > (stack->current_a / 2) && j > (stack->current_b / 2))
 					{
 						if ((stack->current_a - i) <= (stack->current_b - j))
-							return ((stack->current_a - i + 1) + ((stack->current_b - j) - (stack->current_a - i))  + 1);
+							return ((stack->current_a - i + 1) + ((stack->current_b - j) - (stack->current_a - i)) + 1);
 						else if ((stack->current_a - i) > (stack->current_b - j))
 							return ((stack->current_b - j + 1) + ((stack->current_a - i) - (stack->current_b - j)) + 1);
 					}

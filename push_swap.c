@@ -6,19 +6,21 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:46 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/31 13:00:51 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 13:26:28 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	fill_stack(char **argv, t_stack *stack)
+static void	fill_stack(int argc, char **argv, t_stack *stack)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 1;
+	stack->current_a = argc - 2;
+	stack->current_b = -1;
 	stack->a = malloc(sizeof(int) * (stack->current_a + 1));
 	while (argv[j])
 	{
@@ -26,45 +28,50 @@ static void	fill_stack(char **argv, t_stack *stack)
 		i++;
 		j++;
 	}
-	stack->b = malloc(sizeof(int) * (stack->current_a+ 1));
+	stack->b = malloc(sizeof(int) * (stack->current_a + 1));
+}
+
+static void	fill_stackone(char **argv, t_stack *stack)
+{
+	char	**str;
+	int		i;
+
+	str = ft_split(argv[1], ' ');
+	i = 0;
+	while (str[i])
+		i++;
+	stack->current_a = i - 1;
+	stack->current_b = -1;
+	stack->a = malloc(sizeof(int) * (stack->current_a + 1));
+	i = 0;
+	while (str[i])
+	{
+		stack->a[i] = ft_atoi(str[i]);
+		i++;
+	}
+	stack->b = malloc(sizeof(int) * (stack->current_a + 1));
 }
 
 int	main(int argc, char **argv)
 {
-	int	i = 0;
 	t_stack	stack;
 
 	if (alpha_check(argv) == 0 || ft_checkdoubles(argv, argc) == 0)
 		ft_printf("Error\n");
 	else
 	{
-		stack.current_a = argc - 2;
-		stack.current_b = -1;
-		fill_stack(argv, &stack);
-
-		if (argc == 3)
+		if (argc == 2)
+			fill_stackone(argv, &stack);
+		else if (argc > 2)
+			fill_stack(argc, argv, &stack);
+		if (stack.current_a == 3)
 			sort_two(&stack);
-		else if (argc == 4)
+		else if (stack.current_a == 4)
 			sort_three(&stack);
-		else if (argc == 6)
+		else if (stack.current_a == 6)
 			sort_five(&stack);
-		else if (argc > 4)
+		else if (stack.current_a > 4)
 			sort_big(&stack);
 	}
-	while(i <= stack.current_a)
-	{
-		ft_printf("%d\n",stack.a[i]);
-		i++;
-	}
-	i = 0;
-	ft_printf("-----------------\n");
-	while(i <= stack.current_b)
-	{
-		ft_printf("%d\n",stack.b[i]);
-		i++;
-	}
-	ft_printf("... %d", stack.n_moves);
-	free(stack.a);
-	free(stack.b);
 	return (0);
 }

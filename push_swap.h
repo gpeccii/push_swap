@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:52 by gpecci            #+#    #+#             */
-/*   Updated: 2023/03/31 18:51:09 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/03 13:23:41 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,9 @@ typedef struct s_stack
 	int	*b;
 	int	current_a;
 	int	current_b;
-	int	size_lis;
-	int	index_lis;
 	int	n_moves;
 	int	index_insert_to;
 	int	index_min;
-
-	int	*dp;
-	int	*prev;
-	int *lis_raw;
-	int	lis_raw_len;
-	int	*lis;
-	int	lis_len;
-	int	lis_used;
-	int	len;
 }			t_stack;
 
 //push moves
@@ -57,25 +46,19 @@ int		ss(t_stack *stack, int flag);
 int		rr(t_stack *stack, int flag);
 int		rrr(t_stack *stack, int flag);
 
-int		alpha_check(char **argv);
+int		number_check(char **argv);
 int		ft_checkdoubles(char **argv, int argc);
-
-void	lis(t_stack *stack);
 
 int		count_moves(int i, t_stack *stack);
 int		cheapest_move(t_stack *stack);
 
-void	sort_five(t_stack *stack);
-void	sort_three(t_stack *stack);
 void	sort_two(t_stack *stack);
-void	lis_to_b(t_stack *stack);
+void	sort_three(t_stack *stack);
+void	sort_five(t_stack *stack);
 void	sort_big(t_stack *stack);
 int		find_index_min_b(t_stack *stack);
 int		find_index_max_b(t_stack *stack);
 int		find_index_min_a(t_stack *stack);
 int		find_index_max_a(t_stack *stack);
-
-void	lis_finder(t_stack *stack);
-void	push_new_lis_to_b(t_stack *stack);
 
 #endif

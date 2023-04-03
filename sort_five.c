@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_five.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gp <gp@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 13:37:38 by enoviell          #+#    #+#             */
-/*   Updated: 2023/04/01 15:12:22 by gp               ###   ########.fr       */
+/*   Updated: 2023/04/03 13:08:33 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	sort_five(t_stack *stack)
 {
 	int	max;
 	int	min;
-	
+
 	max = find_index_max_a(stack);
 	min = find_index_min_a(stack);
 	if (min < max)
@@ -119,4 +119,6 @@ void	sort_five(t_stack *stack)
 	stack->n_moves += pa(stack, 1);
 	stack->n_moves += pa(stack, 1);
 	stack->n_moves += ra(stack, 1);
+	free(stack->a);
+	free(stack->b);
 }
