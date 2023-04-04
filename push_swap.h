@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:52 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/04 16:34:35 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/04 17:49:54 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
+# include "get_next_line/get_next_line.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -69,6 +70,8 @@ int			max_to_insert(t_stack *stack, int i, int j, int max);
 int			min_to_insert(t_stack *stack, int i, int j, int min);
 int			middle_insert(t_stack *stack, int i, int j);
 
+void		fill_stack(int argc, char **argv, t_stack *stack);
+void		fill_stackone(char **argv, t_stack *stack);
 int			ft_sorted(t_stack *stack);
 
 void		sort_two(t_stack *stack);
