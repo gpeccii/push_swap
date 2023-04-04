@@ -6,11 +6,37 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 14:12:57 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/04 14:13:36 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/04 16:37:58 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+long int	ft_atol(const char *str)
+{
+	int			i;
+	int			sign;
+	long int	result;
+
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32))
+		i++;
+	sign = 1;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	result = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10;
+		result = result + str[i] - '0';
+		i++;
+	}
+	return (result * sign);
+}
 
 int	dup_mine(int *check, int k, int i)
 {

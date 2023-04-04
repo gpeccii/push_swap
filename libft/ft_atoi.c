@@ -6,13 +6,13 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:25:35 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/04 13:55:16 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/04 16:27:10 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long int	ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int			i;
 	int			sign;
