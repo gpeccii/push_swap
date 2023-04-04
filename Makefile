@@ -6,7 +6,7 @@
 #    By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/22 20:13:40 by gpecci            #+#    #+#              #
-#    Updated: 2023/04/03 17:27:22 by gpecci           ###   ########.fr        #
+#    Updated: 2023/04/04 14:14:23 by gpecci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS =	$(P1)push.c \
 		$(P2)sort_five.c \
 		$(P2)sort_big.c \
 		check.c \
+		check_utils.c \
 		push_swap.c \
 
 OBJS = ${SRCS:.c=.o}

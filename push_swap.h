@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:52 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/03 17:20:29 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/04 14:14:02 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <limits.h>
 
 typedef struct s_stack
 {
@@ -50,6 +51,8 @@ int		number_check(char **argv);
 int		ft_checkdoubles(char **argv, int argc);
 int		checkone(char *str);
 int		ft_checkdoubles_2(char *str);
+int		dup_mine(int *check, int k, int i);
+void	free_matrix(char **matrix);
 
 int		count_moves(int i, t_stack *stack);
 int		cheapest_move(t_stack *stack);

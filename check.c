@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:24 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/03 16:43:54 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/04 14:16:17 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,22 @@ int	number_check(char **argv)
 int	ft_checkdoubles(char **argv, int argc)
 {
 	int	i;
-	int	j;
 	int	*tmp;
 
-	i = 1;
-	j = 0;
+	i = 0;
 	tmp = malloc (sizeof(int) * (argc - 1));
-	if (!tmp)
-		return (0);
-	while (argv[i])
-		tmp[j++] = atoi(argv[i++]);
-	i = -1;
-	j = 0;
-	while (i < (argc - 1))
+	while (argv[++i])
 	{
-		while (j < (argc - 1))
+		tmp[i - 1] = ft_atoi(argv[i]);
+		if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
 		{
-			if (tmp[i] == tmp[j])
-				return (0);
-			j++;
+			free(tmp);
+			return (0);
 		}
-		i++;
 	}
-	free(tmp);
+	i = 0;
+	if (dup_mine(tmp, i, argc) == 0)
+		return (0);
 	return (1);
 }
 
@@ -68,25 +61,9 @@ int	checkone(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] != 32 && (str[i] < 48 && str[i] > 57))
+		if (str[i] != 32 && (str[i] < 48 || str[i] > 57))
 			return (0);
 		i++;
-	}
-	return (1);
-}
-
-static int	dup_mine(int *check, int k, int i)
-{
-	int	j;
-
-	while (++k < (i - 1))
-	{
-		j = k + 1;
-		while (++j < i)
-		{
-			if (check[k] == check[j])
-				return (0);
-		}
 	}
 	return (1);
 }
@@ -105,11 +82,17 @@ int	ft_checkdoubles_2(char *str)
 	check = malloc(sizeof(int) * i);
 	k = -1;
 	while (++k < i)
+	{
 		check[k] = ft_atoi(tmp[k]);
-	k = -1;
-	if (dup_mine(check, k, i) == 0)
+		if (ft_atoi(tmp[k]) > INT_MAX || ft_atoi(tmp[k]) < INT_MIN)
+		{
+			free(check);
+			free_matrix(tmp);
+			return (0);
+		}
+	}
+	free_matrix(tmp);
+	if (dup_mine(check, 0, i) == 0)
 		return (0);
-	free(tmp);
-	free(check);
 	return (1);
 }

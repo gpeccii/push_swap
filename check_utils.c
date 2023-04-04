@@ -1,39 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   check_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 17:25:35 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/04 13:55:16 by gpecci           ###   ########.fr       */
+/*   Created: 2023/04/04 14:12:57 by gpecci            #+#    #+#             */
+/*   Updated: 2023/04/04 14:13:36 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-long int	ft_atoi(const char *str)
+int	dup_mine(int *check, int k, int i)
 {
-	int			i;
-	int			sign;
-	long int	result;
+	int	j;
 
-	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32))
-		i++;
-	sign = 1;
-	if (str[i] == '-' || str[i] == '+')
+	while (k < (i - 1))
 	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
+		j = k + 1;
+		while (j < i)
+		{
+			if (check[k] == check[j])
+			{
+				free(check);
+				return (0);
+			}
+			j++;
+		}
+		k++;
 	}
-	result = 0;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10;
-		result = result + str[i] - '0';
-		i++;
-	}
-	return (result * sign);
+	free(check);
+	return (1);
+}
+
+void	free_matrix(char **matrix)
+{
+	int	k;
+
+	k = -1;
+	while (matrix[++k])
+		free(matrix[k]);
+	free(matrix);
 }

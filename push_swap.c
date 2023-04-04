@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:46 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/03 18:57:45 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/04 14:15:00 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void	fill_stackone(char **argv, t_stack *stack)
 		stack->a[i] = ft_atoi(str[i]);
 		i++;
 	}
+	i = 0;
+	free_matrix(str);
 	stack->b = malloc(sizeof(int) * (stack->last_a + 1));
 }
 
@@ -90,8 +92,8 @@ int	main(int argc, char **argv)
 	{
 		if (checkone(argv[1]) == 0 || ft_checkdoubles_2(argv[1]) == 0)
 		{
-			ft_printf("Error\n");
-			return (0);
+			write(2, "Error\n", 6);
+			return (EXIT_FAILURE);
 		}
 		fill_stackone(argv, &stack);
 	}
@@ -99,8 +101,8 @@ int	main(int argc, char **argv)
 	{
 		if (number_check(argv) == 0 || ft_checkdoubles(argv, argc) == 0)
 		{
-			ft_printf("Error\n");
-			return (0);
+			write(2, "Error\n", 6);
+			return (EXIT_FAILURE);
 		}
 		fill_stack(argc, argv, &stack);
 	}
