@@ -6,7 +6,7 @@
 #    By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/22 20:13:40 by gpecci            #+#    #+#              #
-#    Updated: 2023/04/04 14:14:23 by gpecci           ###   ########.fr        #
+#    Updated: 2023/04/04 16:43:02 by gpecci           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ FT_PRINTF = $(FT_PRINTF_PATH)libftprintf.a
 
 P1 = moves/
 P2 = sort/
+P3 = check/
 
 SRCS =	$(P1)push.c \
 		$(P1)rotate.c \
@@ -35,8 +36,8 @@ SRCS =	$(P1)push.c \
 		$(P2)sort_three.c \
 		$(P2)sort_five.c \
 		$(P2)sort_big.c \
-		check.c \
-		check_utils.c \
+		$(P3)check.c \
+		$(P3)check_utils.c \
 		push_swap.c \
 
 OBJS = ${SRCS:.c=.o}

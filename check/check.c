@@ -6,11 +6,11 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:24 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/04 16:37:53 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/04 16:42:28 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	number_check(char **argv)
 {

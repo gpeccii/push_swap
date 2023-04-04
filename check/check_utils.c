@@ -6,11 +6,11 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 14:12:57 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/04 16:37:58 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/04 16:42:22 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 long int	ft_atol(const char *str)
 {
