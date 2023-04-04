@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 13:37:38 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/04 14:17:31 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/04 14:22:35 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	sort_five(t_stack *stack)
 	min = find_index_min_a(stack);
 	if (min < max)
 		push_min_max(stack);
-	else if (max > min)
+	else if (max < min)
 		push_max_min(stack);
 	sort_three(stack);
 	if (stack->b[0] > stack->b[1])
