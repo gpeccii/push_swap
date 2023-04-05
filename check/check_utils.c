@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 14:12:57 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/04 16:42:22 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/05 13:10:39 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 long int	ft_atol(const char *str)
 {
 	int			i;
-	int			sign;
+	long int	sign;
 	long int	result;
 
 	i = 0;

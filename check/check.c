@@ -6,7 +6,7 @@
 /*   By: gpecci <gpecci@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:13:24 by gpecci            #+#    #+#             */
-/*   Updated: 2023/04/04 16:42:28 by gpecci           ###   ########.fr       */
+/*   Updated: 2023/04/05 13:13:17 by gpecci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	number_check(char **argv)
 		j = 0;
 		while ((argv[i][j]) != '\0')
 		{
-			if (ft_isdigit(argv[i][j]) == 0)
+			if (argv[i][j] != 32 && argv[i][j] != '-' &&
+				(argv[i][j] < 48 || argv[i][j] > 57))
 				return (0);
 			j++;
 		}
@@ -63,7 +64,7 @@ int	checkone(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] != 32 && (str[i] < 48 || str[i] > 57))
+		if (str[i] != 32 && str[i] != '-' && (str[i] < 48 || str[i] > 57))
 			return (0);
 		i++;
 	}
